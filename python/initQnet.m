@@ -5,7 +5,7 @@ function [  ] = initQnet()
 params;
 length = 20;
 %new
-Weights = zeros(2*length,3);
+Weights = [[ 0 for x in range(2*length) ] for y in range(3)];
 %Old
 W1 = zeros(2,3);
 W2 = zeros(2,3);
@@ -17,24 +17,20 @@ for j=1:height
     p = rand(1);
     W = exp(-i*2*pi*p);
     Weights(j,:) =[real(W),imag(W),p];
-end    
     
-for j=1:2
-   p = rand(1);
-   W = exp(-i*2*pi*p);
-   W1(j,:) =[real(W),imag(W),p];
-   p = rand(1);
-   W = exp(-i*2*pi*p);
-   W2(j,:) =[real(W),imag(W),p];
-   p = rand(1);
-   W = exp(-i*2*pi*p);
-   W3(j,:) =[real(W),imag(W),p];
-   p = rand(1);
-   W = exp(-i*2*pi*p);
-   W4(j,:) =[real(W),imag(W),p];
-   p = rand(1);
-   W = exp(-i*2*pi*p);
-   W5(j,:) =[real(W),imag(W),p];
+    
+%    p = rand(1);
+%    W = exp(-i*2*pi*p);
+%    W2(j,:) =[real(W),imag(W),p];
+%    p = rand(1);
+%    W = exp(-i*2*pi*p);
+%    W3(j,:) =[real(W),imag(W),p];
+%    p = rand(1);
+%    W = exp(-i*2*pi*p);
+%    W4(j,:) =[real(W),imag(W),p];
+%    p = rand(1);
+%    W = exp(-i*2*pi*p);
+%    W5(j,:) =[real(W),imag(W),p];
 end
 %old
 csvwrite('n1.cls',W1);

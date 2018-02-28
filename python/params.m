@@ -1,6 +1,6 @@
 %% network specifications
 l = 2;
-
+cells = [2,2];
 %%Nodewights files
 nweights = {'n1','n2','n3','n4','n5'};
 %% target function
@@ -40,5 +40,5 @@ INOTIC = kron(I,kron(SWAP,I))*kron(I,kron(I,NOTC))*kron(I,kron(SWAP,I));
 %% Eval specs
 measurements = 100;
 tests = 100;
-cells = 3;
+cells = 5;
 lambda = 0.01;

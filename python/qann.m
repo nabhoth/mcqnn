@@ -14,7 +14,7 @@ errors = zeros(cells,2);
 %    esum = 0;
 %% load all weights
 l = length(nweights);
-for m=1:l
+for i=1:l
     
 end
 %small routine to extract all inputs to a two bit binary function from f
@@ -37,7 +37,6 @@ for j=1:finputs^2
     else
         o = [1,0];
     end
-    
 if cells == 1
     o1 = nodeProcess([in0; in1], nweights{1});
     errors(1,:) = o - o1;
@@ -66,7 +65,7 @@ end
 
 esequence(runcount,1) = esum;
 runcount = runcount + 1;
-esum = mean(logfaults);
+esum = mean(logfaults)
 
 if logfaults(j,1) ~= 0
 %Do a sort of backpropagation
@@ -78,7 +77,6 @@ for k=1:cells
        [rows,~] = size(weights);
        for j=1:rows
           diff = (errors(k,1) - weights(j,1));
-%          weights(j,3)
 %          diff = sqrt(error - abs(weights(j,1:2).^2))
 %          error
 %          weights(j,1:2)
@@ -89,12 +87,13 @@ for k=1:cells
 %          diffweights = sqrt((abs(weights(j,1))-abs(weights(j,2)))^2)*diff
 %          deltaweights = diffweights(1,1)^2 + diffweights(1,2)^2
 %          dweights(runcount,1) = deltaweights;
-          updated = weights(j,3) + lambda*diff; %deltaweights;
+          updated = weights(j,3) + lambda*diff;%deltaweights;
           if updated > 1
               updated = updated - 1;
           elseif updated < 0
               updated = - updated;
           end
+
           W = exp(-i*2*pi*updated);
           weights(j,1) = real(W);
           weights(j,2) = imag(W);
